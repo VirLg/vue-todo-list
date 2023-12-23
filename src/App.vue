@@ -1,17 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Todo v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
+  <Input
+    v-on:click="valueInput"
+    v-bind:placeholder="placeholder"
+    v-bind:value="inputValue"
+    v-on:change-input-value="inputTargetValue"
+  />
+
+  <h2>inputValue : {{ inputValue }}</h2>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Todo from './components/TodoList.vue';
+import Input from './components/form/InputForm.vue';
 export default {
   name: 'App',
+  data() {
+    return {
+      todos: ['Task1'],
+      placeholder: 'Ведите значение',
+      inputValue: '',
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    Todo,
+    Input,
+  },
+  methods: {
+    deleteTodo(idx) {
+      this.todos.splice(idx, 1);
+    },
+    inputTargetValue(e) {
+      this.inputValue = e.target.value;
+    },
+  },
+};
 </script>
 
 <style>
