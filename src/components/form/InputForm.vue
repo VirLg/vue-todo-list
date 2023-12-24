@@ -1,17 +1,18 @@
 <template>
-  <input
-    type="text"
-    v-bind:placeholder="placeholder"
-    v-bind:value="inputValue"
-    v-on:input="inputChangeHandler"
-  />
-  <button v-on:click="addTask">Add Task</button>
+  <div>
+    <input
+      type="text"
+      v-bind:placeholder="placeholder"
+      v-on:input="inputChangeHandler"
+    />
+    <button v-on:click="addTask">Add Task</button>
 
-  <hr />
+    <hr />
+  </div>
 </template>
 <script>
 export default {
-  props: ['inputValue', 'placeholder'],
+  props: ['placeholder'],
 
   methods: {
     inputChangeHandler(event) {
