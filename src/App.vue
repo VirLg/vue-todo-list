@@ -1,23 +1,22 @@
 <template>
   <Todo v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
   <Input
-    v-on:click="valueInput"
     v-bind:placeholder="placeholder"
-    v-bind:value="inputValue"
     v-on:change-input-value="inputTargetValue"
+    v-on:add-task="addTask"
   />
-
-  <h2>inputValue : {{ inputValue }}</h2>
+  <Task v-bind:todos="todos" />
 </template>
 
 <script>
 import Todo from './components/TodoList.vue';
 import Input from './components/form/InputForm.vue';
+import Task from './components/list/TaskList.vue';
 export default {
   name: 'App',
   data() {
     return {
-      todos: ['Task1'],
+      todos: ['Task1', 'Task2', 'Task3'],
       placeholder: 'Ведите значение',
       inputValue: '',
     };
@@ -25,6 +24,7 @@ export default {
   components: {
     Todo,
     Input,
+    Task,
   },
   methods: {
     deleteTodo(idx) {
@@ -32,6 +32,10 @@ export default {
     },
     inputTargetValue(e) {
       this.inputValue = e.target.value;
+    },
+    addTask() {
+      console.log('first', 'first');
+      this.todos.push(this.inputValue);
     },
   },
 };
