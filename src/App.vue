@@ -1,15 +1,14 @@
 <template>
-  <Todo v-bind:todos="todos" v-on:delete-todo="deleteTodo" />
   <Input
     v-bind:placeholder="placeholder"
     v-on:change-input-value="inputTargetValue"
     v-on:add-task="addTask"
   />
-  <Task v-bind:todos="todos" />
+
+  <Task v-bind:todos="todos" v-on:delete-task="deleteTodo" />
 </template>
 
 <script>
-import Todo from './components/TodoList.vue';
 import Input from './components/form/InputForm.vue';
 import Task from './components/list/TaskList.vue';
 export default {
@@ -22,8 +21,8 @@ export default {
     };
   },
   components: {
-    Todo,
     Input,
+
     Task,
   },
   methods: {
