@@ -22,7 +22,6 @@ export default {
   },
   components: {
     Input,
-
     Task,
   },
   methods: {
@@ -33,10 +32,15 @@ export default {
       this.inputValue = e.target.value;
     },
     addTask() {
-      console.log('first', 'first');
-      this.todos.push(this.inputValue);
+      if (this.inputValue === '') {
+        return;
+      } else {
+        this.todos.push(this.inputValue);
+        this.inputValue === '';
+      }
     },
   },
+  watch: {},
 };
 </script>
 
